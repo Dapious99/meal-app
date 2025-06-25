@@ -3,13 +3,19 @@ import { FlatList, StyleSheet, View } from "react-native";
 import { CATEGORIES } from "../../constant/dummy-data";
 import CategoryGridView from "./components/CategoryGridView";
 
-function categoryItemRenderer({ itemData }) {
-  return (
-    <CategoryGridView title={itemData.item.title} color={itemData.item.color} />
-  );
-}
-
-const Homescreen = () => {
+const Homescreen = ({ navigation }) => {
+  function categoryItemRenderer({ item }) {
+    function pressHandler() {
+      navigation.navigate("MealsScreen", { categoryId: item.id });
+    }
+    return (
+      <CategoryGridView
+        title={item.title}
+        color={item.color}
+        onClick={pressHandler}
+      />
+    );
+  }
   return (
     <View style={styles.gridContainer}>
       <FlatList
@@ -28,6 +34,7 @@ const styles = StyleSheet.create({
   gridContainer: {
     flex: 1,
     padding: 16,
+    marginTop: 10,
   },
   categoryDisplay: {
     flexDirection: "row",
