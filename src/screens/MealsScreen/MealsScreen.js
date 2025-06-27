@@ -5,18 +5,17 @@ import MealItem from "./components/MealItem";
 
 const MealsScreen = ({ route }) => {
   const catIdForMeal = route.params.categoryId;
-
   const mealsToDisplay = MEALS.filter((mealItem) => {
-    // mealItem.categoryIds === catIdForMeal;
-    mealItem.categoryIds.indexOf(catIdForMeal) >= 0;
+    //return mealItem.categoryIds === catIdForMeal;
+    return mealItem.categoryIds.indexOf(catIdForMeal) >= 0;
   });
 
   function renderMealItem(itemData) {
-    return <MealItem title={itemData.item.title} />;
+    return <MealItem {...itemData.item} />;
   }
 
   return (
-    <View>
+    <View style={styles.container}>
       <FlatList
         data={mealsToDisplay}
         keyExtractor={(item) => item.id}
@@ -28,6 +27,6 @@ const MealsScreen = ({ route }) => {
 
 export default MealsScreen;
 
-const style = StyleSheet.create({
-  container: { flex: 1, margin: 24 },
+const styles = StyleSheet.create({
+  container: { flex: 1, margin: 12 },
 });
