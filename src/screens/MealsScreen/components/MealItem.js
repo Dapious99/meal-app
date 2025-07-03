@@ -12,6 +12,7 @@ const MealItem = ({
   imageUrl,
   duration,
   ingredients,
+  onPress,
 }) => {
   // ,
   // steps,
@@ -20,7 +21,7 @@ const MealItem = ({
 
   return (
     <View style={styles.mealCont}>
-      <Pressable>
+      <Pressable onPress={onPress}>
         <View>
           <Image source={{ uri: imageUrl }} style={styles.image} />
           <Text style={styles.title}>{title}</Text>
@@ -29,9 +30,9 @@ const MealItem = ({
           <Text>Pocket-Friendly: {capitalize(affordability)}</Text>
           <Text>Complexity: {capitalize(complexity)}</Text>
           <Text>Duration: {duration}mins</Text>
-          <Text>Ingredients: {ingredients}</Text>
-          <Text>Lactose: {isLactoseFree === true ? "True" : "False"}</Text>
-          <Text>For veggies: {isVegetarian === true ? "True" : "False"}</Text>
+          {/* <Text>Ingredients: {ingredients}</Text> */}
+          {/* <Text>Lactose: {isLactoseFree === true ? "True" : "False"}</Text>
+          <Text>For veggies: {isVegetarian === true ? "True" : "False"}</Text> */}
         </View>
       </Pressable>
     </View>

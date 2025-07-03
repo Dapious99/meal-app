@@ -3,7 +3,7 @@ import { FlatList, StyleSheet, Text, View } from "react-native";
 import { MEALS } from "../../constant/dummy-data";
 import MealItem from "./components/MealItem";
 
-const MealsScreen = ({ route }) => {
+const MealsScreen = ({ route, navigation }) => {
   const catIdForMeal = route.params.categoryId;
   const mealsToDisplay = MEALS.filter((mealItem) => {
     //return mealItem.categoryIds === catIdForMeal;
@@ -11,7 +11,11 @@ const MealsScreen = ({ route }) => {
   });
 
   function renderMealItem(itemData) {
-    return <MealItem {...itemData.item} />;
+    function pressHandler() {
+      navigation.navigate("MealsDetailsScreen", { item: itemData.item });
+      console.log("meal", itemData.item);
+    }
+    return <MealItem {...itemData.item} onPress={pressHandler} />;
   }
 
   return (
