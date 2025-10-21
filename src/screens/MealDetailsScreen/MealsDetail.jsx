@@ -1,4 +1,3 @@
-import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 import { Color } from "../../constant/colors";
 import { capitalize } from "../../utils";
@@ -13,7 +12,7 @@ const MealsDetail = ({ route }) => {
         <Text style={styles.title}>{meal.title}</Text>
       </View>
       <View style={styles.otherDetails}>
-        <Text>Pocket-Friendly: {capitalize(meal.affordability)}</Text>
+        <Text>Pocket-type: {capitalize(meal.affordability)}</Text>
         <Text>Complexity: {capitalize(meal.complexity)}</Text>
         <Text>Duration: {meal.duration}mins</Text>
         <Text>Ingredients: {meal.ingredients}</Text>
